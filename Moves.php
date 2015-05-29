@@ -120,10 +120,12 @@
 
 		private function geturl($url) {
 			$session = curl_init($url);
+
 			curl_setopt($session, CURLOPT_RETURNTRANSFER, 1);
             // Retrieve both data and header
             curl_setopt($session, CURLOPT_HEADER, 1);
             //curl_setopt($session, CURLOPT_VERBOSE, true);
+			curl_setopt($session, CURLOPT_SSL_VERIFYPEER, false);
 
             if (!empty($this->send_header_info)) {
                 curl_setopt($session, CURLOPT_HTTPHEADER, $this->send_header_info);
